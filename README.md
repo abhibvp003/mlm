@@ -1,6 +1,14 @@
 # MLM System - Multi-Level Marketing Platform
 
-A comprehensive Multi-Level Marketing (MLM) system built with Node.js, Express, React, TypeScript, and MongoDB. This platform provides a complete solution for managing MLM businesses with user registration, genealogy trees, commission calculations, and analytics.
+A modern, full-stack Multi-Level Marketing (MLM) system built with **React** (TypeScript), **Node.js/Express** backend, and **MongoDB Atlas**. This platform provides a complete solution for managing MLM businesses with user registration, genealogy trees, commission calculations, and analytics.
+
+## 🎯 Tech Stack
+
+- **Frontend**: React 19 + TypeScript + React Router + Tailwind CSS
+- **Backend**: Node.js + Express.js
+- **Database**: MongoDB Atlas (Cloud)
+- **Authentication**: JWT
+- **UI Components**: Lucide React Icons + Recharts
 
 ## Features
 
@@ -199,32 +207,38 @@ A comprehensive Multi-Level Marketing (MLM) system built with Node.js, Express, 
 
 ### Project Structure
 ```
-mlm-system/
-├── server/                 # Backend application
+mlm/
+├── server/                 # Backend API (Node.js + Express)
 │   ├── controllers/        # Route controllers
-│   ├── middleware/         # Custom middleware
-│   ├── models/            # Database models
-│   ├── routes/            # API routes
+│   ├── middleware/         # Custom middleware (auth, validation)
+│   ├── models/             # MongoDB models (Mongoose)
+│   ├── routes/             # API routes
+│   ├── services/          # Business logic services
 │   ├── utils/             # Utility functions
-│   └── index.js           # Server entry point
-├── client/                # Frontend application
+│   ├── config.env.example # Environment variables template
+│   └── index.js            # Server entry point
+├── client/                # React Frontend Application
 │   ├── src/
-│   │   ├── components/    # React components
-│   │   ├── pages/         # Page components
-│   │   ├── services/      # API services
-│   │   ├── hooks/         # Custom hooks
-│   │   ├── types/         # TypeScript types
-│   │   └── utils/         # Utility functions
+│   │   ├── components/    # Reusable React components
+│   │   ├── pages/         # Page components (Dashboard, Network, etc.)
+│   │   ├── services/      # API service layer
+│   │   ├── hooks/         # Custom React hooks
+│   │   ├── types/         # TypeScript type definitions
+│   │   ├── App.tsx        # Main App component
+│   │   └── index.tsx      # React entry point
 │   └── public/            # Static assets
-└── package.json           # Root package configuration
+├── .gitignore             # Git ignore rules
+├── package.json           # Root package configuration
+├── start.sh               # Start script
+└── README.md              # Project documentation
 ```
 
 ### Scripts
-- `npm run dev` - Start both frontend and backend in development mode
-- `npm run server` - Start backend server only
-- `npm run client` - Start frontend development server
-- `npm run build` - Build frontend for production
-- `npm run install-all` - Install dependencies for all packages
+- `npm run dev` - Start both React frontend and backend API in development mode
+- `npm run server` - Start backend API server only (port 5001)
+- `npm run client` - Start React development server only (port 3000)
+- `npm run build` - Build React frontend for production
+- `npm run install-all` - Install dependencies for root, server, and client
 
 ## 🚀 Deployment
 
