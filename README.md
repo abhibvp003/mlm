@@ -5,10 +5,12 @@ A modern, full-stack Multi-Level Marketing (MLM) system built with **React** (Ty
 ## 🎯 Tech Stack
 
 - **Frontend**: React 19 + TypeScript + React Router + Tailwind CSS
-- **Backend**: Node.js + Express.js
+- **Backend**: Node.js + Express.js  
 - **Database**: MongoDB Atlas (Cloud)
 - **Authentication**: JWT
 - **UI Components**: Lucide React Icons + Recharts
+
+> **Note**: This is a React web application. For mobile apps, see deployment section.
 
 ## Features
 

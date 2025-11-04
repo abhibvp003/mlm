@@ -20,6 +20,13 @@ build/
 dist/
 *.tsbuildinfo
 
+# React Native / Expo (if needed in future)
+.expo/
+.expo-shared/
+web-build/
+*.ipa
+*.apk
+
 # Logs
 logs/
 *.log
