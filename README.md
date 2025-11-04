@@ -43,41 +43,67 @@ A comprehensive Multi-Level Marketing (MLM) system built with Node.js, Express, 
 - **Recharts** - Data visualization
 - **Lucide React** - Icons
 
-## Installation
+## 🚀 Getting Started
 
 ### Prerequisites
 - Node.js (v16 or higher)
-- MongoDB (v4.4 or higher)
+- MongoDB Atlas account (or local MongoDB)
 - npm or yarn
 
-### Setup Instructions
+### GitHub Repository
+- **Repository URL**: https://github.com/abhibvp003/mlm.git
+- **Clone the repository**:
+  ```bash
+  git clone https://github.com/abhibvp003/mlm.git
+  cd mlm
+  ```
 
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd mlm-system
-   ```
+### Installation
 
-2. **Install dependencies**
+1. **Install dependencies**
    ```bash
    npm run install-all
    ```
 
-3. **Environment Configuration**
+2. **Environment Configuration**
    
-   Create a `.env` file in the `server` directory:
+   Copy the example environment file and configure it:
+   ```bash
+   cd server
+   cp config.env.example config.env
+   ```
+   
+   Edit `server/config.env` with your configuration:
    ```env
-   PORT=5000
-   MONGODB_URI=mongodb://localhost:27017/mlm_system
+   PORT=5001
+   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/mlm_system?retryWrites=true&w=majority&appName=mlm
    JWT_SECRET=your_jwt_secret_key_here_change_this_in_production
    NODE_ENV=development
+   FRONTEND_URL=http://localhost:3000
+   
+   # Email Configuration (optional)
+   EMAIL_HOST=smtp.gmail.com
+   EMAIL_PORT=587
+   EMAIL_USER=your-email@gmail.com
+   EMAIL_PASS=your-app-password
    ```
 
-4. **Start MongoDB**
+3. **MongoDB Atlas Setup** (Recommended)
+   - Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas)
+   - Create a new cluster
+   - Add your IP address to the Network Access list
+   - Create a database user
+   - Get your connection string and update `MONGODB_URI` in `config.env`
+
+4. **Create Initial Users** (Optional)
    ```bash
-   # Make sure MongoDB is running on your system
-   mongod
+   cd server
+   node utils/createUsers.js
    ```
+   This creates:
+   - Admin: `admin@mlm.com` / `admin123`
+   - Abhishek: `abhishek@mlm.com` / `abhishek123`
+   - Birendra: `birendra@mlm.com` / `birendra123`
 
 5. **Run the application**
    ```bash
@@ -90,8 +116,8 @@ A comprehensive Multi-Level Marketing (MLM) system built with Node.js, Express, 
    ```
 
 6. **Access the application**
-   - Frontend: http://152.59.144.69:3000
-   - Backend API: http://152.59.144.69:5001
+   - Frontend: http://localhost:3000
+   - Backend API: http://localhost:5001
 
 ## API Endpoints
 
@@ -199,6 +225,87 @@ mlm-system/
 - `npm run client` - Start frontend development server
 - `npm run build` - Build frontend for production
 - `npm run install-all` - Install dependencies for all packages
+
+## 🚀 Deployment
+
+This is a full-stack application that requires separate deployment for frontend and backend.
+
+### Deployment Options
+
+#### Option 1: Vercel (Frontend) + Railway (Backend) - Recommended
+
+**Frontend on Vercel:**
+1. Push your code to GitHub
+2. Go to [Vercel](https://vercel.com) and import your repository
+3. Set root directory to `client`
+4. Build command: `npm run build`
+5. Output directory: `build`
+6. Add environment variable: `REACT_APP_API_URL` = your backend URL
+
+**Backend on Railway:**
+1. Go to [Railway](https://railway.app) and create a new project
+2. Connect your GitHub repository
+3. Set root directory to `server`
+4. Add environment variables from `config.env`
+5. Railway will automatically deploy and provide a URL
+
+#### Option 2: Netlify (Frontend) + Render (Backend)
+
+**Frontend on Netlify:**
+1. Push code to GitHub
+2. Go to [Netlify](https://netlify.com) and import repository
+3. Base directory: `client`
+4. Build command: `npm run build`
+5. Publish directory: `client/build`
+
+**Backend on Render:**
+1. Go to [Render](https://render.com) and create a new Web Service
+2. Connect GitHub repository
+3. Root directory: `server`
+4. Build command: `npm install`
+5. Start command: `npm start`
+6. Add environment variables
+
+#### Option 3: GitHub Pages (Frontend) + Heroku (Backend)
+
+**Frontend on GitHub Pages:**
+1. Build the frontend: `cd client && npm run build`
+2. Push `build` folder to `gh-pages` branch
+3. Enable GitHub Pages in repository settings
+
+**Backend on Heroku:**
+1. Create a Heroku app
+2. Set buildpacks and environment variables
+3. Deploy using Git or Heroku CLI
+
+### Environment Variables for Deployment
+
+**Backend (Server):**
+- `PORT` - Server port (usually auto-set by hosting platform)
+- `MONGODB_URI` - Your MongoDB Atlas connection string
+- `JWT_SECRET` - Secret key for JWT tokens
+- `NODE_ENV` - Set to `production`
+- `FRONTEND_URL` - Your frontend deployment URL
+- `EMAIL_HOST`, `EMAIL_PORT`, `EMAIL_USER`, `EMAIL_PASS` - Email configuration
+
+**Frontend (Client):**
+- `REACT_APP_API_URL` - Your backend API URL (e.g., `https://your-backend.railway.app`)
+
+### MongoDB Atlas Configuration
+
+For production:
+1. Create a production cluster in MongoDB Atlas
+2. Add `0.0.0.0/0` to Network Access (or specific IPs of your hosting providers)
+3. Create a production database user
+4. Update `MONGODB_URI` with production credentials
+
+### Quick Deploy Script
+
+After deploying, you can create users by running:
+```bash
+cd server
+node utils/createUsers.js
+```
 
 ## Contributing
 
