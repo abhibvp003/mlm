@@ -63,10 +63,10 @@ A modern, full-stack Multi-Level Marketing (MLM) system built with **React** (Ty
 ### GitHub Repository
 - **Repository URL**: https://github.com/abhibvp003/mlm.git
 - **Clone the repository**:
-  ```bash
+   ```bash
   git clone https://github.com/abhibvp003/mlm.git
   cd mlm
-  ```
+   ```
 
 ### Installation
 
@@ -243,6 +243,21 @@ mlm/
 - `npm run install-all` - Install dependencies for root, server, and client
 
 ## 🚀 Deployment
+
+### AWS EC2 Deployment (Recommended for Production)
+
+For a complete guide on deploying to AWS EC2, see **[DEPLOYMENT_AWS_EC2.md](./DEPLOYMENT_AWS_EC2.md)**.
+
+This guide includes:
+- Step-by-step EC2 instance setup
+- Nginx reverse proxy configuration
+- PM2 process management
+- SSL certificate setup (Let's Encrypt)
+- Domain configuration
+- Security best practices
+- Monitoring and maintenance
+
+### Other Deployment Options
 
 This is a full-stack application that requires separate deployment for frontend and backend.
 
