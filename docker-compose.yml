@@ -1,0 +1,28 @@
+services:
+  backend:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: mlm-backend
+    ports:
+      - "5001:5001"
+    env_file:
+      - ./server/config.env
+    environment:
+      - NODE_ENV=production
+      - PORT=5001
+      - FRONTEND_URL=http://localhost:8080
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: mlm-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+

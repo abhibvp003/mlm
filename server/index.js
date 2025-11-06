@@ -29,9 +29,9 @@ app.use(limiter);
 
 // CORS configuration
 app.use(cors({
-  origin: process.env.NODE_ENV === 'production' 
-    ? ['https://yourdomain.com'] 
-    : ['http://152.59.144.69:3000', 'http://localhost:3000'],
+  origin: process.env.NODE_ENV === 'production'
+    ? [process.env.FRONTEND_URL || 'http://localhost:8080']
+    : ['http://152.59.144.69:3000', 'http://localhost:3000', 'http://localhost:8080'],
   credentials: true
 }));
 
